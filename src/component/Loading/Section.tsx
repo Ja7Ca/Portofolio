@@ -37,7 +37,7 @@ const LoadingSection = () => {
       }, []);
       
   return (
-    <section className={`${display ? "" : "hidden"} w-[100svw] h-[100svh] flex justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-50 overflow-hidden ${isLoading ? "bg-[white]" : "bg-[none]"}]`}>
+    <section className={`${display ? "" : "hidden"} w-[100svw] h-[100svh] flex justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-50 overflow-hidden ${isLoading ? "bg-[white]" : "bg-[none]"}`}>
         <div className={`panel w-full h-full bg-[white] overflow-hidden flex items-center justify-end transition-transform duration-1000 ${isLoading ? "-translate-x-[0%]" : "-translate-x-[100%]"}`}>
             <p className={`text-[#272727] px-2 font-semibold duration-500 ${text ? "translate-x-[0%]" : "translate-x-[100%]"}`}>Jarot</p>
         </div>
