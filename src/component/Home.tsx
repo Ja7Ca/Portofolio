@@ -55,7 +55,7 @@ const HomeComponent = () => {
                     </div>
                 </div>
             </div>
-            <div className="mt-20 flex space-between gap-7">
+            <div className="mt-20 flex md:flex-row flex-col space-between gap-7">
                 <div>
                     <h3 className="text-[28px] leading-[72px] font-semibold">What I do</h3>
                     <p className='text-lg leading-8 text-[#D6D6D6]'>
