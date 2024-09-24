@@ -38,7 +38,7 @@ const CardProject: FC<PropsProject> = (props) => {
             </div>
             <div>
                 <p className="font-bold text-lg text-[#DEDEDE] mb-5">{tag}</p>
-                <h1 className="text-3xl md:text-5xl font-bold mb-7">{title}</h1>
+                <h1 className="text-3xl md:text-5xl text-[#DEDEDE] font-bold mb-7">{title}</h1>
                 <p className="text-[#D4D4D4] text-lg line-clamp-3">{description}</p>
             </div>
         </div>
