@@ -27,7 +27,7 @@ const NavbarComponent = () => {
     <Navbar fluid rounded className="bg-transparent" theme={customTheme}>
         {/* <div className="container flex justify-between items-center border-b border-[#4D4D4D] py-14"> */}
           <NavbarBrand as={Link} href="https://flowbite-react.com">
-            <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Jarotstwn</span>
+            <span className="self-center whitespace-nowrap text-xl font-semibold text-[#DEDEDE]">Jarotstwn</span>
           </NavbarBrand>
           <NavbarToggle />
           <NavbarCollapse>

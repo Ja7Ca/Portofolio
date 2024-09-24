@@ -15,12 +15,12 @@ const HomeComponent = () => {
                         </div>
                     </div>
                     <div className='max-w-[690px]'>
-                        <h3 className="text-[28px] leading-[72px] font-semibold">Biography</h3>
+                        <h3 className="text-[28px] leading-[72px] font-semibold text-[#DEDEDE]">Biography</h3>
                         <p className='text-lg leading-8 text-[#D6D6D6]'>Getting Buff +1 for learning, Buff +2 for documentation and more buff on managing team. Exicited on <span className="text-[#4CA9FF] font-bold">Frontend</span> & <span className="text-[#80FFA3] font-bold">Backend</span> Developer.</p>
                     </div>
                 </div>
                 <div>
-                    <h3 className="text-[28px] leading-[72px] font-semibold">Lets connect</h3>
+                    <h3 className="text-[28px] leading-[72px] font-semibold text-[#DEDEDE]">Lets connect</h3>
                     <div className="flex gap-4">
                         <Link href={"#"}>
                             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -57,7 +57,7 @@ const HomeComponent = () => {
             </div>
             <div className="mt-20 flex md:flex-row flex-col space-between gap-7">
                 <div>
-                    <h3 className="text-[28px] leading-[72px] font-semibold">What I do</h3>
+                    <h3 className="text-[28px] leading-[72px] font-semibold text-[#DEDEDE]">What I do</h3>
                     <p className='text-lg leading-8 text-[#D6D6D6]'>
                     Build and maintain websites.<br/><span className="text-[#4CA9FF] font-bold">Frontend</span> developers usually use <span className="text-[#4cdcff] font-bold">ReactJS</span>, <span className="text-[#4cfff8] font-bold">NextJS</span>, <span className="text-[#4cffc9] font-bold">Webflow</span>.<br/><span className="text-[#80FFA3] font-bold">Backend</span> development using <span className="text-[#80ff86] font-bold">ExpressJS</span>, <span className="text-[#8fff80] font-bold">Laravel</span>, <span className="text-[#bdff80] font-bold">CodeIgniter</span>.</p>
                 </div>
