@@ -1,35 +1,55 @@
-"use client"
+import CardProject from "@/component/Card/CardProject"
+import CardSnipet from "@/component/Card/CardSnipet"
+import HomeComponent from "@/component/Home"
+import NavbarComponent from "@/component/Navbar"
+import WrapSection from "@/component/Section/WrapSection"
+import FooterComponent from "@/component/Footer"
+import LoadingSection from "@/component/Loading/Section"
 
-import { useEffect, useState } from 'react';
+const page = () => {
 
-const Home = () => {
-    const [start, setStart] = useState(false);
-    const [text, setText] = useState(false);
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 5000)
-        setTimeout(() => {
-            setStart(true)
-        }, 100)
-        setTimeout(() => {
-            setText(true)
-        }, 1100)
-      }, []);
-      
   return (
-    <section className="w-[100svw] h-[100svh] flex items-center">
-        <div className="panel w-full bg-[#272727] overflow-hidden flex items-center justify-end">
-            <p className={`px-2 font-semibold duration-500 translate-x-[${text ? "0%" : "100%"}]`}>Jarot</p>
-        </div>
-        <div className={`${start ? "h-[3em]" : "h-[0em]"} transition-all duration-1000 w-[2px] text-[1vw] bg-white`}></div>
-        <div className="panel w-full bg-[#272727] overflow-hidden flex items-center justify-start">
-            <p className={`px-2 font-semibold duration-500 translate-x-[${text ? "0%" : "-100%"}]`}>Setiawan</p>
-        </div>
-    </section>
+    <>
+      <LoadingSection/>
+      <NavbarComponent/>
+      <HomeComponent/>
+      <WrapSection title="Featured Project" classWrap="mt-10 grid grid-cols-1 gap-16">
+        <CardProject 
+          link="https://ja7ca.github.io" 
+          image="/landingpage.png" 
+          title="Landing Page" 
+          tag="HTML + CSS + JS" 
+          description="Landing Page is a page where users can find out about the project they will be using"/>
+        <CardProject 
+          link="https://chat-app-frontend-black-three.vercel.app/dashboard" 
+          image="/chat-app.png" 
+          title="Chat App" 
+          tag="NextJS + ExpressJS + Socket.io" 
+          description="
+          A real-time chat application built with Next.js for a modern and responsive user interface, Express.js as a lightweight backend server, and Socket.io for fast and reliable real-time communication."
+          // icon={["nextjs", "expressjs", "socketio"]}
+          />
+        <CardProject 
+          link="#" 
+          image="/notes-app.png" 
+          title="Notes App" 
+          tag="NextJS + ExpressJS + NextAuth" 
+          description="
+          Notes App is a web-based note-taking application built with Next.js for a modern and responsive user interface, Express.js as a reliable backend server, and NextAuth for secure and user-friendly authentication."/>
+        <CardProject 
+          link="#" 
+          image="/game-app.png" 
+          title="Game App" 
+          tag="NextJS" 
+          description="Game App is a web-based gaming application designed to provide simple entertainment with a modern, responsive, and interactive interface. Built using Next.js, it delivers a fast and enjoyable gaming experience. Currently, Game App features the classic Tic-Tac-Toe game, while the memory-challenging Flip Card game is in development"/>
+      </WrapSection>
+      <WrapSection title="Code Snippet" classWrap="mt-10 grid grid-cols-1 md:grid-cols-2 gap-x-[1.5em] gap-y-[2em] max-w-[71.0625em]">
+        <CardSnipet/>
+        <CardSnipet/>
+      </WrapSection>
+      <FooterComponent/>
+    </>
   )
 }
 
-export default Home
+export default page
