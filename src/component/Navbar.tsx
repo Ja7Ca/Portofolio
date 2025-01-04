@@ -24,20 +24,20 @@ const customTheme: CustomFlowbiteTheme['navbar'] = {
 
 const NavbarComponent = () => {
   return (
-    <Navbar fluid rounded className="bg-transparent" theme={customTheme}>
+    <Navbar fluid rounded className="bg-transparent" theme={customTheme} id='home'>
         {/* <div className="container flex justify-between items-center border-b border-[#4D4D4D] py-14"> */}
           <NavbarBrand as={Link} href="https://flowbite-react.com">
             <span className="self-center whitespace-nowrap text-xl font-semibold text-white">Jarotstwn</span>
           </NavbarBrand>
           <NavbarToggle />
           <NavbarCollapse>
-            <NavbarLink href="#" active>
+            <NavbarLink href="#home" active>
               Home
             </NavbarLink>
-            <NavbarLink as={Link} href="#">
+            <NavbarLink as={Link} href="#project">
               Project
             </NavbarLink>
-            <NavbarLink href="#">Snippet</NavbarLink>
+            <NavbarLink href="#snippet">Snippet</NavbarLink>
             <NavbarLink href="#">Contact</NavbarLink>
           </NavbarCollapse>
         {/* </div> */}

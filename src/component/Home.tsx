@@ -34,7 +34,7 @@ const HomeComponent = () => {
                                 </defs>
                             </svg>
                         </Link>
-                        <Link href={"#"}>
+                        <Link href={"https://www.linkedin.com/in/jarot-setiawan-947275214/"}>
                             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M22.6673 17.5063V22.4357H19.81V17.8357C19.81 16.681 19.3967 15.893 18.362 15.893C17.5727 15.893 17.102 16.4237 16.8953 16.9383C16.8206 17.1223 16.8007 17.3783 16.8007 17.6343V22.4357H13.942C13.942 22.4357 13.9807 14.6463 13.942 13.8397H16.8007V15.057L16.782 15.085H16.8007V15.057C17.1807 14.4703 17.858 13.637 19.3766 13.637C21.2566 13.637 22.6673 14.8663 22.6673 17.5063ZM10.9513 9.69434C9.97398 9.69434 9.33398 10.337 9.33398 11.1797C9.33398 12.0063 9.95532 12.6663 10.914 12.6663H10.9327C11.93 12.6663 12.55 12.005 12.55 11.1797C12.5313 10.337 11.93 9.69434 10.9513 9.69434ZM9.50332 22.4357H12.362V13.8397H9.50332V22.4357Z" fill="white"/>
                                 <path d="M8.00033 5.33317C7.29308 5.33317 6.6148 5.61412 6.11471 6.11422C5.61461 6.61432 5.33366 7.29259 5.33366 7.99984V23.9998C5.33366 24.7071 5.61461 25.3854 6.11471 25.8855C6.6148 26.3856 7.29308 26.6665 8.00033 26.6665H24.0003C24.7076 26.6665 25.3858 26.3856 25.8859 25.8855C26.386 25.3854 26.667 24.7071 26.667 23.9998V7.99984C26.667 7.29259 26.386 6.61432 25.8859 6.11422C25.3858 5.61412 24.7076 5.33317 24.0003 5.33317H8.00033ZM8.00033 2.6665H24.0003C25.4148 2.6665 26.7714 3.22841 27.7716 4.2286C28.7718 5.22879 29.3337 6.58535 29.3337 7.99984V23.9998C29.3337 25.4143 28.7718 26.7709 27.7716 27.7711C26.7714 28.7713 25.4148 29.3332 24.0003 29.3332H8.00033C6.58584 29.3332 5.22928 28.7713 4.22909 27.7711C3.2289 26.7709 2.66699 25.4143 2.66699 23.9998V7.99984C2.66699 6.58535 3.2289 5.22879 4.22909 4.2286C5.22928 3.22841 6.58584 2.6665 8.00033 2.6665Z" fill="white"/>
@@ -64,9 +64,9 @@ const HomeComponent = () => {
                 <div>
                     <h3 className="text-[28px] leading-[72px] font-semibold text-white">What I do</h3>
                     <p className='text-lg leading-8 text-[#D6D6D6]'>
-                    Build and maintain websites.<br/><span className="text-[#4CA9FF] font-bold">Frontend</span> developers usually use <span className="text-[#4cdcff] font-bold">ReactJS</span>, <span className="text-[#4cfff8] font-bold">NextJS</span>, <span className="text-[#4cffc9] font-bold">Webflow</span>.<br/><span className="text-[#80FFA3] font-bold">Backend</span> development using <span className="text-[#80ff86] font-bold">ExpressJS</span>, <span className="text-[#8fff80] font-bold">Laravel</span>, <span className="text-[#bdff80] font-bold">CodeIgniter</span>.</p>
+                    Build and maintain websites.<br/><span className="text-[#4CA9FF] font-bold">Frontend</span> developers usually use <span className="text-[#4cdcff] font-bold">ReactJS</span>, <span className="text-[#4cfff8] font-bold">NextJS</span>, <span className="text-[#4cffc9] font-bold">Webflow</span>, <span className="text-[#4cffa5] font-bold">VueJs</span>.<br/><span className="text-[#80FFA3] font-bold">Backend</span> development using <span className="text-[#80ff86] font-bold">ExpressJS</span>, <span className="text-[#8fff80] font-bold">Laravel</span>, <span className="text-[#bdff80] font-bold">CodeIgniter</span>.</p>
                 </div>
-                <CardDo />
+                {/* <CardDo /> */}
             </div>
         </div>
     </section>
