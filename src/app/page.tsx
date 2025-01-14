@@ -1,3 +1,5 @@
+"use client"
+
 import CardProject from "@/component/Card/CardProject"
 import CardSnipet from "@/component/Card/CardSnipet"
 import HomeComponent from "@/component/Home"
@@ -5,14 +7,16 @@ import NavbarComponent from "@/component/Navbar"
 import WrapSection from "@/component/Section/WrapSection"
 import FooterComponent from "@/component/Footer"
 import LoadingSection from "@/component/Loading/Section"
+import { useState } from "react"
 
 const page = () => {
+  const [endLoading, setEndLoading] = useState(false)
 
   return (
     <>
-      <LoadingSection/>
-      <NavbarComponent/>
-      <HomeComponent/>
+      <LoadingSection setEndLoading={setEndLoading}/>
+      <NavbarComponent endLoading={endLoading}/>
+      <HomeComponent endLoading={endLoading}/>
       <WrapSection title="Featured Project" classWrap="mt-10 grid grid-cols-1 gap-16" id="project">
         <CardProject 
           link="https://ja7ca.github.io" 

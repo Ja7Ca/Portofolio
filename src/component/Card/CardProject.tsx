@@ -36,7 +36,7 @@ const CardProject: FC<PropsProject> = (props) => {
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-project gap-2 md:gap-7 items-center">
-            <div className="relative bg-[#323443] max-h-[282px] w-full md:w-[555px] px-[52px] pt-20 overflow-hidden">
+            <div className="relative bg-[#323443] max-h-[282px] w-full md:w-[555px] px-[20px] md:px-[52px] pt-20 overflow-hidden">
                 <Link target={link ? "_blank" : "_self"} href={link} className="w-9 h-9 flex justify-center items-center rounded-lg bg-[#3F4152] absolute top-3 right-3" onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
                     <Image src="/arow-up.png" alt="arrow-up" width={20} height={20} className={`${ hover ? 'rotate-45' : 'rotate-90' } transition-transform duration-200`}/>
                 </Link>

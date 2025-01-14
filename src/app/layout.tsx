@@ -17,10 +17,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <SmoothScrolling>
-        {children}
-        </SmoothScrolling>
+      <body className={`${inter.className} overflow-hidden`}>
+          <SmoothScrolling>
+          {children}
+          </SmoothScrolling>
         </body>
     </html>
   );

@@ -2,12 +2,21 @@ import Image from 'next/image'
 import Link from 'next/link'
 import CardDo from './Card/CardDo'
 
-const HomeComponent = () => {
+const HomeComponent = ({endLoading}:{endLoading: boolean}) => {
   return (
     <section className="py-12 md:py-24">
         <div className="container px-5">
-            <h1 className="text-[2em] md:text-6xl font-bold bg-gradient-to-br from-[#3BF686] to-[#4CA9FF] bg-clip-text text-transparent leading-[32px] md:leading-[72px] max-w-[1029px]">Hi Im Jarot, a special human with some ability to love learning and working on teamwork.</h1>
-            <div className="mt-16 block md:flex gap-20">
+            {/* <h1 className="text-[2em] md:text-6xl font-bold bg-gradient-to-br from-[#3BF686] to-[#4CA9FF] bg-clip-text text-transparent leading-[32px] md:leading-[72px] max-w-[1029px]">Hi Im Jarot, a special human with some ability to love learning and working on teamwork.</h1> */}
+            <div className="overflow-hidden">
+                <h1 className={`text-[2em] md:text-6xl font-bold bg-gradient-to-br from-[#3BF686] to-[#4CA9FF] bg-clip-text text-transparent leading-[32px] md:leading-[72px] max-w-[1029px] transition-transform duration-500 ${endLoading ? 'translate-y-[0%]' : 'translate-y-[100%]'}`}>Hi Im Jarot, a special human with </h1>
+            </div>
+            <div className="overflow-hidden">
+                <h1 className={`text-[2em] md:text-6xl font-bold bg-gradient-to-br from-[#3BF686] to-[#4CA9FF] bg-clip-text text-transparent leading-[32px] md:leading-[72px] max-w-[1029px] transition-transform duration-500 ${endLoading ? 'translate-y-[0%]' : 'translate-y-[100%]'} delay-200`}>some ability to love learning and </h1>
+            </div>
+            <div className="overflow-hidden">
+                <h1 className={`text-[2em] md:text-6xl font-bold bg-gradient-to-br from-[#3BF686] to-[#4CA9FF] bg-clip-text text-transparent leading-[32px] md:leading-[72px] max-w-[1029px] transition-transform duration-500 ${endLoading ? 'translate-y-[0%]' : 'translate-y-[100%]'} delay-[400ms]`}>working on teamwork.</h1>
+            </div>
+            <div className={`mt-16 block md:flex gap-20 transition-opacity duration-500 ${endLoading ? 'opacity-100' : 'opacity-0'} delay-[600ms]`}>
                 <div className="flex flex-col md:flex-row gap-9">
                     <div className="bg-gradient-to-tr from-[#3BF686] to-[#62D9FF] p-1 rounded-full w-40 h-40 overflow-hidden self-center md:self-auto">
                         <div className="bg-[#3A3636] w-full h-full rounded-full flex items-center justify-center">
@@ -60,7 +69,7 @@ const HomeComponent = () => {
                     </div>
                 </div>
             </div>
-            <div className="mt-20 flex md:flex-row flex-col space-between gap-7">
+            <div className={`mt-20 flex md:flex-row flex-col space-between gap-7 transition-opacity duration-500 ${endLoading ? 'opacity-100' : 'opacity-0'} delay-[800ms]`}>
                 <div>
                     <h3 className="text-[28px] leading-[72px] font-semibold text-white">What I do</h3>
                     <p className='text-lg leading-8 text-[#D6D6D6]'>

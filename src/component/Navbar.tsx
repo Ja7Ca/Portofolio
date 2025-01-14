@@ -22,9 +22,9 @@ const customTheme: CustomFlowbiteTheme['navbar'] = {
   },
 }
 
-const NavbarComponent = () => {
+const NavbarComponent = ({endLoading}:{endLoading: boolean}) => {
   return (
-    <Navbar fluid rounded className="bg-transparent" theme={customTheme} id='home'>
+    <Navbar fluid rounded className={`bg-transparent transition-transform duration-500 ${endLoading ? 'translate-y-[0%]' : '-translate-y-[100%]'} delay-[1000ms]`} theme={customTheme} id='home'>
         {/* <div className="container flex justify-between items-center border-b border-[#4D4D4D] py-14"> */}
           <NavbarBrand as={Link} href="https://flowbite-react.com">
             <span className="self-center whitespace-nowrap text-xl font-semibold text-white">Jarotstwn</span>
