@@ -1,8 +1,3 @@
 {
-  "extends": "next/core-web-vitals",
-  "[typescriptreact]": {
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-    }
-  }
+  "extends": "next/core-web-vitals"
 }

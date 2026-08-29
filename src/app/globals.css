@@ -21,13 +21,31 @@ body {
   background: #272727;
 }
 
+/* Lenis Smooth Scroll Fixes */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 }
 
-.container{
+.container {
   max-width: 1440px;
   margin: 0 auto;
 }
