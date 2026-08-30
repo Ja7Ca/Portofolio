@@ -3,6 +3,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import SmoothScrolling from "./SmoothScroll";
 import JsonLd from "@/components/JsonLd";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -84,6 +87,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const gaId = process.env.NEXT_PUBLIC_GA_ID || "G-FR0TYHJ0T3";
+
   return (
     <html lang="en">
       <head>
@@ -91,6 +96,9 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} bg-[#272727] text-white antialiased`}>
         <SmoothScrolling>{children}</SmoothScrolling>
+        <Analytics />
+        <SpeedInsights />
+        <GoogleAnalytics gaId={gaId} />
       </body>
     </html>
   );

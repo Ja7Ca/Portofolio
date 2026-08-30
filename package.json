@@ -9,7 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/third-parties": "^16.3.3",
     "@studio-freight/react-lenis": "^0.0.47",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
     "flowbite-react": "^0.7.2",
     "next": "14.1.0",
     "react": "^18",
