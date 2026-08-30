@@ -25,6 +25,14 @@ export default function MainLayout() {
           id="project"
         >
           <CardProject
+            link="https://pritch.vercel.app/"
+            image="/pritch-dashboard.png"
+            title="Pritch Dashboard"
+            tag="React.js + Tailwind CSS"
+            description="A modern SaaS pricing analytics dashboard featuring real-time performance metrics, interactive pricing model strategies, and sleek user experience."
+            icon={["reactjs", "tailwindcss"]}
+          />
+          <CardProject
             link="https://ja7ca.github.io"
             image="/landingpage.png"
             title="Modern Landing Page"

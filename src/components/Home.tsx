@@ -64,9 +64,12 @@ const HomeComponent = ({ endLoading }: HomeComponentProps) => {
                 applications with exceptional user experiences.
               </p>
 
-              {/* View Experience & CV Button */}
-              <Link
-                href="#experience"
+              {/* Download CV Button */}
+              <a
+                href="/CV_Jarot_Setiawan.pdf"
+                download="CV_Jarot_Setiawan.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#3BF686] to-[#4CA9FF] text-[#272727] font-bold rounded-xl hover:opacity-90 transition-opacity"
               >
                 <svg
@@ -84,8 +87,8 @@ const HomeComponent = ({ endLoading }: HomeComponentProps) => {
                     strokeLinejoin="round"
                   />
                 </svg>
-                View Experience &amp; CV
-              </Link>
+                Download CV
+              </a>
             </div>
           </div>
 
@@ -94,6 +97,27 @@ const HomeComponent = ({ endLoading }: HomeComponentProps) => {
               {"Let's connect"}
             </h2>
             <div className="flex gap-4">
+              <Link
+                href="https://wa.me/6289637079629"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp Contact"
+                className="hover:opacity-80 transition-opacity"
+              >
+                <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M16 2.667C8.636 2.667 2.667 8.636 2.667 16c0 2.82.875 5.438 2.373 7.604L3.333 28.667l5.244-1.68C10.661 28.32 13.23 29.333 16 29.333c7.364 0 13.333-5.969 13.333-13.333S23.364 2.667 16 2.667zm7.391 18.794c-.312.875-1.554 1.604-2.52 1.812-.667.142-1.536.257-4.469-.96-3.75-1.554-6.16-5.375-6.347-5.625-.187-.25-1.517-2.021-1.517-3.854 0-1.833.958-2.73 1.298-3.083.34-.354.743-.443.99-.443.247 0 .495.002.71.01.228.01.533-.087.834.636.312.75 1.066 2.604 1.16 2.792.094.187.157.417.031.667-.125.25-.187.417-.375.636-.187.218-.396.489-.567.656-.187.187-.383.39-.164.764.218.375.975 1.61 2.093 2.604 1.438 1.281 2.65 1.677 3.025 1.865.375.187.594.156.812-.094.218-.25.938-1.094 1.188-1.469.25-.375.495-.312.833-.187.34.125 2.156 1.016 2.526 1.203.37.187.617.28.71.437.094.156.094.906-.218 1.781z"
+                    fill="white"
+                  />
+                </svg>
+              </Link>
+
               <Link
                 href="https://instagram.com/jarotstwn"
                 target="_blank"
