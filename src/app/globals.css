@@ -39,6 +39,11 @@ html.lenis body {
   overflow: hidden;
 }
 
+/* Intro loading screen: once per session (see components/Loading/intro.ts) */
+html[data-intro-seen] [data-intro] {
+  display: none;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

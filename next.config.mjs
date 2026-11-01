@@ -1,3 +1,5 @@
+import createMDX from "@next/mdx";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -13,4 +15,7 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+// Project write-ups live in src/content/projects/*.mdx
+const withMDX = createMDX();
+
+export default withMDX(nextConfig);

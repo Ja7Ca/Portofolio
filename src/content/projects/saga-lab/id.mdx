@@ -1,0 +1,34 @@
+import Flow from "@/components/Article/Flow";
+
+## Tentang project
+
+Project belajar untuk saga pattern. Satu checkout dipecah ke tiga service, yaitu Order, Inventory, dan Payment, yang masing-masing punya database sendiri, sehingga satu transaksi database tidak bisa menjaga semuanya tetap konsisten. Saga yang mengambil alih tugas itu: setiap service menjalankan transaksi lokalnya sendiri, dan kalau langkah berikutnya gagal, langkah sebelumnya dibatalkan dengan compensating action.
+
+Project ini berjalan di lokal dan tidak di-deploy.
+
+## Teknologi
+
+- **Backend:** tiga aplikasi Laravel 11 (Order, Inventory, Payment), masing-masing dengan database SQLite sendiri
+- **Komunikasi:** Laravel job di Redis queue, satu queue per service
+- **Frontend:** Next.js dengan TanStack Query
+
+## Cara kerja
+
+<Flow
+  title="Pembayaran gagal, jadi reservasi dibatalkan"
+  steps={[
+    { actor: "Order", action: "menyimpan order sebagai pending.", event: "order-created" },
+    { actor: "Inventory", action: "mereservasi stok.", event: "stock-reserved", tone: "success" },
+    { actor: "Payment", action: "menolak pembayaran.", event: "payment-failed", tone: "fail" },
+    { actor: "Order", action: "menandai order gagal.", event: "release-stock", tone: "fail" },
+    { actor: "Inventory", action: "melepas reservasi dan mengembalikan stok.", tone: "undo" },
+  ]}
+/>
+
+Kalau pembayaran berhasil, Order menandai order sebagai `confirmed`. Kalau stok tidak cukup, Inventory mengirim `stock-unavailable` dan order langsung gagal sebelum sampai ke Payment. Payment tiruan ini sengaja menolak setiap quantity genap, supaya alur gagal bisa diuji kapan saja.
+
+- Service hanya berkomunikasi lewat queue, tidak pernah lewat HTTP, dan tidak ada koordinator pusat (choreography).
+- Setiap reservasi disimpan sebagai baris tersendiri, jadi saat release Inventory tahu persis berapa stok yang harus dikembalikan.
+- Stok dicek dan dikurangi dalam satu update bersyarat, jadi dua order tidak bisa sama-sama mengambil stok terakhir.
+- Event baru dikirim setelah transaksi lokal ter-commit, dan setiap handler aman dijalankan dua kali.
+- Frontend menampilkan order sebagai "sedang diproses" dan mengecek statusnya secara berkala sampai `confirmed` atau `failed`, lengkap dengan timeline setiap perubahan status.

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef, useCallback } from "react";
+import { INTRO_SEEN_ATTR, markIntroSeen } from "./intro";
 
 interface LoadingSectionProps {
   setEndLoading(endLoading: boolean): void;
@@ -33,10 +34,19 @@ const LoadingSection = ({ setEndLoading }: LoadingSectionProps) => {
       setDisplay(false);
       setEndLoading(true);
       document.body.style.overflow = "";
+      markIntroSeen();
     }, 1500);
   }, [setEndLoading]);
 
   useEffect(() => {
+    // Already played this session: skip straight to the page.
+    if (document.documentElement.hasAttribute(INTRO_SEEN_ATTR)) {
+      hasFinishedRef.current = true;
+      setDisplay(false);
+      setEndLoading(true);
+      return;
+    }
+
     document.body.style.overflow = "hidden";
 
     const startTime = Date.now();
@@ -81,11 +91,12 @@ const LoadingSection = ({ setEndLoading }: LoadingSectionProps) => {
         document.body.style.overflow = "";
       };
     }
-  }, [completeLoadingFlow]);
+  }, [completeLoadingFlow, setEndLoading]);
 
   return (
     <section
       aria-label="Loading Screen"
+      data-intro
       className={`${display ? "" : "hidden"
         } fixed inset-0 z-50 flex items-center justify-center overflow-hidden ${isLoading ? "bg-white" : "bg-transparent pointer-events-none"
         }`}

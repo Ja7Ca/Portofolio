@@ -3,81 +3,43 @@
 import { FC, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import TechBadges from "@/components/TechBadges";
+import type { Project } from "@/data/projects";
 
-interface PropsProject {
-  title?: string;
-  tag?: string;
-  description?: string;
-  link?: string;
-  image?: string;
-  icon?: string[];
-}
+const external = { target: "_blank", rel: "noopener noreferrer" };
 
-const dataTag: Record<string, string> = {
-  nextjs:
-    "https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white",
-  reactjs:
-    "https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB",
-  tailwindcss:
-    "https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white",
-  expressjs:
-    "https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB",
-  socketio:
-    "https://img.shields.io/badge/Socket.io?style=flat-square&logo=Socket.io&logoColor=white",
-  nextauth:
-    "https://img.shields.io/badge/next--auth?style=flat-square",
-};
-
-const CardProject: FC<PropsProject> = (props) => {
-  const {
-    title = "Modern Landing Page",
-    tag = "Web Development",
-    description = "A responsive landing page designed to effectively showcase product features, value propositions, and key information.",
-    link = "#",
-    image = "/landingpage.png",
-    icon = [],
-  } = props;
+const CardProject: FC<Project> = (props) => {
+  const { title, tag, description, image, icon = [], liveUrl, slug } = props;
   const [hover, setHover] = useState(false);
 
-  const isExternalLink = link && link !== "#";
+  const detailHref = slug ? `/projects/${slug}` : undefined;
+  // The corner arrow opens the write-up when there is one, else the live site.
+  const primaryHref = detailHref ?? liveUrl;
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-project gap-4 md:gap-7 items-center">
       <div className="relative bg-[#323443] max-h-[282px] w-full md:w-[555px] px-[20px] md:px-[52px] pt-12 overflow-hidden rounded-xl">
-        <Link
-          target={isExternalLink ? "_blank" : "_self"}
-          rel={isExternalLink ? "noopener noreferrer" : undefined}
-          href={link}
-          aria-label={`View ${title}`}
-          className="w-9 h-9 flex justify-center items-center rounded-lg bg-[#3F4152] absolute top-3 right-3 z-10 hover:bg-[#4F5268] transition-colors"
-          onMouseEnter={() => setHover(true)}
-          onMouseLeave={() => setHover(false)}
-        >
-          <Image
-            src="/arow-up.png"
-            alt="External Link Arrow"
-            width={20}
-            height={20}
-            className={`${
-              hover ? "rotate-45" : "rotate-90"
-            } transition-transform duration-200`}
-          />
-        </Link>
-        <div className="flex gap-2 mb-4 flex-wrap">
-          {icon.map((el, index) =>
-            dataTag[el] ? (
-              <Image
-                key={`${el}-${index}`}
-                src={dataTag[el]}
-                alt={el}
-                width={70}
-                height={20}
-                unoptimized
-                className="h-5 w-auto"
-              />
-            ) : null
-          )}
-        </div>
+        {primaryHref && (
+          <Link
+            {...(detailHref ? {} : external)}
+            href={primaryHref}
+            aria-label={detailHref ? `Read details of ${title}` : `View ${title}`}
+            className="w-9 h-9 flex justify-center items-center rounded-lg bg-[#3F4152] absolute top-3 right-3 z-10 hover:bg-[#4F5268] transition-colors"
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
+          >
+            <Image
+              src="/arow-up.png"
+              alt="External Link Arrow"
+              width={20}
+              height={20}
+              className={`${
+                hover ? "rotate-45" : "rotate-90"
+              } transition-transform duration-200`}
+            />
+          </Link>
+        )}
+        <TechBadges icon={icon} className="mb-4" />
         <Image
           src={image}
           alt={title}
@@ -94,6 +56,27 @@ const CardProject: FC<PropsProject> = (props) => {
         <p className="text-[#D4D4D4] text-lg leading-relaxed line-clamp-3">
           {description}
         </p>
+        {primaryHref && (
+          <div className="flex flex-wrap gap-3 mt-6">
+            {detailHref && (
+              <Link
+                href={detailHref}
+                className="px-5 py-2.5 rounded-lg font-semibold text-sm bg-[#3BF686] text-[#272727] hover:opacity-90 transition-opacity"
+              >
+                Read details <span aria-hidden="true">→</span>
+              </Link>
+            )}
+            {liveUrl && (
+              <Link
+                {...external}
+                href={liveUrl}
+                className="px-5 py-2.5 rounded-lg font-semibold text-sm border border-[#4D4D4D] text-white hover:border-[#3BF686]/60 hover:text-[#3BF686] transition-colors"
+              >
+                Live site <span aria-hidden="true">↗</span>
+              </Link>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
