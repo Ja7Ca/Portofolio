@@ -14,7 +14,9 @@ A modern, responsive, and performance-optimized personal portfolio web applicati
 
 - 🚀 **Next.js 14 App Router**: Fast server-side rendering & static page generation.
 - 🎨 **Modern Dark UI Theme**: Custom gradients, smooth animations, and responsive layout.
-- 🛠️ **Featured Projects Showcase**: Detailed project cards with live links and technology badges (Pritch Dashboard, Real-Time Chat App, Game App, Notes App, Weather App).
+- 🛠️ **Featured Projects Showcase**: Detailed project cards with live links and technology badges (Snapduo, Saga Lab, Pritch Dashboard, Real-Time Chat App, Game App, Notes App, Weather App).
+- 📝 **Project Detail Pages**: What the project is, its tech stack and how it works, in English (`/projects/[slug]`) and Indonesian (`/id/projects/[slug]`), written in MDX (`src/content/projects/[slug]/en.mdx`, `id.mdx`). A card shows **Read details** when a write-up exists and **Live site** when the project is deployed.
+- ⏳ **Intro Loading Screen**: Plays once per browser session; reloads and returning from a write-up show the page right away.
 - 📄 **Downloadable CV**: Direct download trigger for updated PDF resume.
 - 🔍 **Complete SEO & OpenGraph**:
   - Structured Data (Schema.org JSON-LD for Person & WebSite).
@@ -28,7 +30,8 @@ A modern, responsive, and performance-optimized personal portfolio web applicati
 
 - **Framework**: [Next.js 14](https://nextjs.org/) (App Router)
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **UI & Styling**: [Tailwind CSS](https://tailwindcss.org/)
+- **UI & Styling**: [Tailwind CSS](https://tailwindcss.org/) + [@tailwindcss/typography](https://github.com/tailwindlabs/tailwindcss-typography)
+- **Content**: [MDX](https://mdxjs.com/) via [@next/mdx](https://nextjs.org/docs/app/building-your-application/configuring/mdx)
 - **Smooth Scroll**: [@studio-freight/react-lenis](https://github.com/studio-freight/lenis)
 - **Deployment**: [GitHub Pages](https://ja7ca.github.io) / Vercel
 
@@ -36,15 +39,19 @@ A modern, responsive, and performance-optimized personal portfolio web applicati
 
 ## 💻 Featured Projects
 
-1. **[Pritch Dashboard](https://pritch.vercel.app/)** (`React.js` + `Tailwind CSS`)
+1. **[Snapduo](https://snapduo.ja7ca.web.id)** (`Next.js` + `Cloudflare Workers` + `WebRTC`)
+   - Online photobooth for two people in different places, with a synced countdown and a shared photo strip. Write-up: `/projects/snapduo` (Indonesian: `/id/projects/snapduo`).
+2. **Saga Lab** (`Laravel` + `Redis Queue` + `Next.js`)
+   - Learning project implementing the saga pattern across Order, Inventory and Payment services with compensating actions. Write-up: `/projects/saga-lab` (Indonesian: `/id/projects/saga-lab`).
+3. **[Pritch Dashboard](https://pritch.vercel.app/)** (`React.js` + `Tailwind CSS`)
    - A modern SaaS pricing analytics dashboard featuring real-time performance metrics and pricing strategies.
-2. **[Real-Time Chat App](https://chat-app-frontend-black-three.vercel.app/dashboard)** (`Next.js` + `Express.js` + `Socket.io`)
+4. **[Real-Time Chat App](https://chat-app-frontend-black-three.vercel.app/dashboard)** (`Next.js` + `Express.js` + `Socket.io`)
    - Real-time instant messaging web app with Express.js backend and Socket.io sockets.
-3. **[Modern Landing Page](https://ja7ca.github.io)** (`HTML` + `CSS` + `JS`)
+5. **[Modern Landing Page](https://ja7ca.github.io)** (`HTML` + `CSS` + `JS`)
    - High-converting responsive product landing page showcase.
-4. **[Game App](https://game-app-tau-lake.vercel.app/)** (`Next.js`)
+6. **[Game App](https://game-app-tau-lake.vercel.app/)** (`Next.js`)
    - Interactive web-based gaming application featuring classic Tic-Tac-Toe and memory card games.
-5. **[Weather App](https://weather-app-dcka.vercel.app/)** (`Vue.js`)
+7. **[Weather App](https://weather-app-dcka.vercel.app/)** (`Vue.js`)
    - Real-time weather forecasting application integrated with BMKG API data.
 
 ---

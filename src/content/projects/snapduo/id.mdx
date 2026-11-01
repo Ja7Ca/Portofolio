@@ -1,0 +1,31 @@
+import Flow from "@/components/Article/Flow";
+
+## Tentang project
+
+Photobooth online untuk dua orang di tempat berbeda. Satu orang membuat room dan membagikan link-nya, lalu orang kedua bergabung. Mereka bisa saling melihat dan mendengar, menghitung mundur bersama, dan sama-sama mendapat photo strip yang sama. Strip itu bisa diunduh, dicetak, atau dibagikan lewat link yang kedaluwarsa setelah 24 jam.
+
+## Teknologi
+
+- **Frontend:** Next.js (App Router), TypeScript, dan Tailwind CSS, di-deploy di Vercel
+- **Backend:** Cloudflare Workers dengan Durable Objects, satu per room
+- **Real-time:** WebRTC untuk video, audio, dan foto, WebSocket untuk signaling, serta TURN dari Cloudflare Realtime
+- **Monorepo:** pnpm, dengan package protocol bersama yang dipakai kedua aplikasi
+
+## Cara kerja
+
+<Flow
+  title="Siapa berkomunikasi dengan siapa"
+  steps={[
+    { actor: "Browser A", action: "membuat room dan terhubung ke room itu lewat WebSocket." },
+    { actor: "Room (Durable Object)", action: "menyimpan state room dan meneruskan signaling WebRTC di antara kedua orang.", tone: "success" },
+    { actor: "Browser B", action: "bergabung lewat link yang dibagikan." },
+    { actor: "A ⇄ B", action: "saling mengirim video, audio, dan foto secara langsung lewat WebRTC.", tone: "success" },
+  ]}
+/>
+
+- **Server yang memutuskan.** Browser mengirim permintaan seperti "ganti frame" atau "mulai", lalu room mengeceknya sesuai aturan sebelum mengirim state terbaru ke kedua orang. Dua orang yang menekan tombol bersamaan tidak bisa memulai dua sesi foto.
+- **Countdown serentak.** Server menentukan waktu mulai, dan setiap browser mengukur selisih jamnya dengan jam server, sehingga kedua kamera menjepret di saat yang sama.
+- **Foto tetap peer to peer.** Setiap ponsel mengambil fotonya sendiri dan mengirimkannya ke ponsel lain lewat WebRTC data channel. Strip-nya lalu digambar di browser dengan resolusi 300 dpi.
+- **Koneksi ulang.** Setelah reload atau koneksi terputus, kursi ditahan selama 2 menit dan orang itu otomatis bergabung kembali.
+- **Link berbagi.** Worker menyimpan strip yang dibagikan dan menghapusnya setelah 24 jam.
+- **Batas penyalahgunaan.** Rate limit dan kuota harian per IP menjaga layanan gratis ini agar tidak disalahgunakan.

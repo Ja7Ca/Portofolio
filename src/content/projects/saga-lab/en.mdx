@@ -1,0 +1,34 @@
+import Flow from "@/components/Article/Flow";
+
+## What it is
+
+A learning project for the saga pattern. A checkout is split across three services, Order, Inventory and Payment, and each has its own database, so one database transaction can't keep them consistent. The saga does that job instead: each service runs its own local transaction, and when a later step fails, the earlier steps are undone with compensating actions.
+
+It runs locally and isn't deployed.
+
+## Tech stack
+
+- **Backend:** three Laravel 11 apps (Order, Inventory, Payment), each with its own SQLite database
+- **Messaging:** Laravel jobs on Redis queues, one queue per service
+- **Frontend:** Next.js with TanStack Query
+
+## How it works
+
+<Flow
+  title="Payment fails, so the reservation is undone"
+  steps={[
+    { actor: "Order", action: "saves the order as pending.", event: "order-created" },
+    { actor: "Inventory", action: "reserves the stock.", event: "stock-reserved", tone: "success" },
+    { actor: "Payment", action: "rejects the charge.", event: "payment-failed", tone: "fail" },
+    { actor: "Order", action: "marks the order failed.", event: "release-stock", tone: "fail" },
+    { actor: "Inventory", action: "releases the reservation and puts the stock back.", tone: "undo" },
+  ]}
+/>
+
+If the payment succeeds, Order marks the order `confirmed`. If there isn't enough stock, Inventory sends `stock-unavailable` and the order fails before reaching Payment. The mock payment rejects every even quantity, so the failure path can be tested on demand.
+
+- Services only talk through queues, never over HTTP, and there is no central coordinator (choreography).
+- Each reservation is stored as its own row, so a release knows exactly how much stock to give back.
+- Stock is checked and decremented in one conditional update, so two orders can't both take the last item.
+- Events are sent only after the local transaction commits, and every handler is safe to run twice.
+- The frontend shows the order as "processing" and polls its status until it is `confirmed` or `failed`, with a timeline of every state change.

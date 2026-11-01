@@ -1,0 +1,31 @@
+import Flow from "@/components/Article/Flow";
+
+## What it is
+
+An online photobooth for two people in different places. One person creates a room and shares the link, and the other joins. They can see and hear each other, count down together, and both end up with the same photo strip. The strip can be downloaded, printed, or shared through a link that expires after 24 hours.
+
+## Tech stack
+
+- **Frontend:** Next.js (App Router), TypeScript and Tailwind CSS, deployed on Vercel
+- **Backend:** Cloudflare Workers with Durable Objects, one per room
+- **Real-time:** WebRTC for video, audio and photos, WebSocket for signaling, and TURN from Cloudflare Realtime
+- **Monorepo:** pnpm, with a shared protocol package used by both apps
+
+## How it works
+
+<Flow
+  title="Who talks to whom"
+  steps={[
+    { actor: "Browser A", action: "creates a room and connects to it over WebSocket." },
+    { actor: "Room (Durable Object)", action: "holds the room state and passes WebRTC signaling between the two people.", tone: "success" },
+    { actor: "Browser B", action: "joins through the shared link." },
+    { actor: "A ⇄ B", action: "send video, audio and photos directly to each other over WebRTC.", tone: "success" },
+  ]}
+/>
+
+- **The server decides.** Browsers send requests such as "change frame" or "start", and the room checks them against its rules before sending the new state to both people. Two people pressing at once can't start two captures.
+- **Synced countdown.** The server sets the start time, and each browser measures how far its clock is from the server's, so both shutters fire at the same moment.
+- **Photos stay peer to peer.** Each phone takes its own photo and sends it to the other over a WebRTC data channel. The strip is then drawn in the browser at 300 dpi.
+- **Reconnects.** After a reload or a dropped connection, the seat is held for 2 minutes and the person rejoins automatically.
+- **Share links.** The Worker stores the shared strip and deletes it after 24 hours.
+- **Abuse limits.** Rate limits and daily quotas per IP keep the free service from being misused.

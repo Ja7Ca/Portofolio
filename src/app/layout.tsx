@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import SmoothScrolling from "./SmoothScroll";
 import JsonLd from "@/components/JsonLd";
+import { introSeenScript } from "@/components/Loading/intro";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -90,8 +91,10 @@ export default function RootLayout({
   const gaId = process.env.NEXT_PUBLIC_GA_ID || "G-FR0TYHJ0T3";
 
   return (
-    <html lang="en">
+    // The intro script below may add an attribute to <html> before React loads.
+    <html lang="en" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: introSeenScript }} />
         <JsonLd />
       </head>
       <body className={`${inter.className} bg-[#272727] text-white antialiased`}>
